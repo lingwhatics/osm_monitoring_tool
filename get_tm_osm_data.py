@@ -7,7 +7,7 @@
 import json
 import sys      #Require module sys for reading program options
 from osgeo import ogr
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import time
 import os
 
@@ -20,10 +20,10 @@ def get_tm_project_json(task_id):
 	x_req = 'XMLHttpRequest\r\n'
 	
 	#send xmlhttp request
-	req = urllib2.Request(url)
+	req = urllib.request.Request(url)
 	req.add_header('Referer', referer)
 	req.add_header('X-Requested-With', x_req)
-	resp = urllib2.urlopen(req)
+	resp = urllib.request.urlopen(req)
 	content = resp.read()
 	
 	#convert content to json format and count features
@@ -65,8 +65,8 @@ def get_tm_info(tm_project_json):
 def get_osm_data(min_lon,max_lat,max_lon,min_lat,output_file):
 	#get osm data from osm api
 	url = 'http://api.openstreetmap.org/api/0.6/map?bbox='+min_lon+','+max_lat+','+max_lon+','+min_lat
-	req = urllib2.Request(url)
-	resp = urllib2.urlopen(req)
+	req = urllib.request.Request(url)
+	resp = urllib.request.urlopen(req)
 	content = resp.read()
 	
 	#save osm data
@@ -120,18 +120,18 @@ def main(task_id, output_directory):
 	end_time = time.time()
 	run_time = end_time - start_time
 	
-	print '############ END ######################################'
-	print '##'
-	print '## input HOT task id: '+task_id
-	print '##'
-	print '## output directory: '+output_directory
-	print '## number of output files: '+str(len(subtask_id_list))
-	print '##'
-	print '## runtime: '+str(run_time)+' s'
-	print '##'
-	print '## B. Herfort, GIScience Research Group'
-	print '##'
-	print '#######################################################'
+	print('############ END ######################################')
+	print('##')
+	print('## input HOT task id: '+task_id)
+	print('##')
+	print('## output directory: '+output_directory)
+	print('## number of output files: '+str(len(subtask_id_list)))
+	print('##')
+	print('## runtime: '+str(run_time)+' s')
+	print('##')
+	print('## B. Herfort, GIScience Research Group')
+	print('##')
+	print('#######################################################')
 	
 	
 if __name__ == "__main__":
@@ -141,7 +141,7 @@ if __name__ == "__main__":
     #
 
     if len( sys.argv ) != 3: 
-        print "[ ERROR ] you must supply 2 arguments: HOT_Task_ID output_directory"
+        print("[ ERROR ] you must supply 2 arguments: HOT_Task_ID output_directory")
         sys.exit( 1 )
 
     main( sys.argv[1], sys.argv[2] )	

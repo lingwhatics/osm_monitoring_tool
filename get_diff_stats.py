@@ -92,26 +92,26 @@ def main(diff_file, out_dir):
 	fileout.write(line)
 	fileout.close()
 	
-	print '############ END ######################################'
-	print '##'
-	print '## input diff file: '+diff_file
-	print '##'
-	print '## created nodes: '+str(Nodes.created)
-	print '## created ways: '+str(Ways.created)
-	print '## created buildings: '+str(Buildings.created)
-	print '##'
-	print '## modified nodes: '+str(Nodes.modified)
-	print '## modified ways: '+str(Ways.modified)
-	print '## modified buildings: '+str(Buildings.modified)
-	print '##'
-	print '## deleted nodes: '+str(Nodes.deleted)
-	print '## deleted ways: '+str(Ways.deleted)
-	print '## deleted buildings: '+str(Buildings.deleted)
-	print '##'
-	print '##'
-	print '## B. Herfort, GIScience Research Group'
-	print '##'
-	print '#######################################################'
+	print('############ END ######################################')
+	print('##')
+	print('## input diff file: '+diff_file)
+	print('##')
+	print('## created nodes: '+str(Nodes.created))
+	print('## created ways: '+str(Ways.created))
+	print('## created buildings: '+str(Buildings.created))
+	print('##')
+	print('## modified nodes: '+str(Nodes.modified))
+	print('## modified ways: '+str(Ways.modified))
+	print('## modified buildings: '+str(Buildings.modified))
+	print('##')
+	print('## deleted nodes: '+str(Nodes.deleted))
+	print('## deleted ways: '+str(Ways.deleted))
+	print('## deleted buildings: '+str(Buildings.deleted))
+	print('##')
+	print('##')
+	print('## B. Herfort, GIScience Research Group')
+	print('##')
+	print('#######################################################')
 
 
 
@@ -123,7 +123,7 @@ if __name__ == "__main__":
     #
 
     if len( sys.argv ) != 3: 
-        print "[ ERROR ] you must supply 2 arguments: diff.osc out_dir"
+        print("[ ERROR ] you must supply 2 arguments: diff.osc out_dir")
         sys.exit( 1 )
 
     main( sys.argv[1], sys.argv[2] )	

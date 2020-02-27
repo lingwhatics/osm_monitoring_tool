@@ -52,7 +52,7 @@ def main(directory,output_file,extension):
 			cmd_suffix = cmd_suffix + '--merge '
 			
 			if (i%50 == 0 ) or (i == (len(selected_files)-1)):
-				print i
+				print(i)
 				osmosis = os.path.dirname(cwd) + '\\osmosis-latest\\bin\\osmosis.bat'
 				cmd_prefix = osmosis +' --read-xml file="'+output_file+'" --sort '
 				cmd = cmd_prefix + cmd_middle + cmd_suffix + ' --write-xml file="'+output_file+'" -q'
@@ -65,15 +65,15 @@ def main(directory,output_file,extension):
 	end_time = time.time()
 	run_time = end_time - start_time
 	
-	print '############ END ######################################'
-	print '##'
-	print '## output file: '+output_file
-	print '##'
-	print '## runtime: '+str(run_time)+' s'
-	print '##'
-	print '## B. Herfort, GIScience Research Group'
-	print '##'
-	print '#######################################################'
+	print('############ END ######################################')
+	print('##')
+	print('## output file: '+output_file)
+	print('##')
+	print('## runtime: '+str(run_time)+' s')
+	print('##')
+	print('## B. Herfort, GIScience Research Group')
+	print('##')
+	print('#######################################################')
 	
 if __name__ == "__main__":
 
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     #
 
     if len( sys.argv ) != 4: 
-        print "[ ERROR ] you must supply 3 arguments: osm_data_directory output_file file_extension"
+        print("[ ERROR ] you must supply 3 arguments: osm_data_directory output_file file_extension")
         sys.exit( 1 )
 
     main( sys.argv[1], sys.argv[2], sys.argv[3])	

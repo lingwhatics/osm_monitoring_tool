@@ -13,14 +13,14 @@ timestamp_list = []
 task_id = sys.argv[1]
 
 def do_something_else(sc): 
-	print "start next run..."
+	print("start next run...")
 
 	#get time
 	lt = time.localtime()
 	
 	timestamp = str(lt[0])+'_'+str(lt[1])+'_'+str(lt[2])+'_'+str(lt[3])+'_'+str(lt[4])
 	timestamp_list.append(timestamp)
-	print 'timestamp: %s' % timestamp
+	print('timestamp: %s' % timestamp)
 	
 	#create osm data directory
 	cwd = os.getcwd()
@@ -29,20 +29,20 @@ def do_something_else(sc):
 	os.mkdir(osm_data_dir)
 	
 	#get osm data for tasking manager project
-	print 'Download OSM data from OpenStreetMap API. This may take some time...'	
+	print('Download OSM data from OpenStreetMap API. This may take some time...')	
 	cmd = 'python get_tm_osm_data.py '+task_id+' '+osm_data_dir
 	os.system(cmd)
 	
 	
 	#merge osm data
-	print 'Merge .osm files'
+	print('Merge .osm files')
 	output_file = osm_data_dir + '\merge_'+timestamp+'.osm'
 	cmd = 'python merge_osm_data.py ' + osm_data_dir + ' ' + output_file + ' osm'
 	os.system(cmd)
 	
 	
 	#compare osm data
-	print 'Compare two .osm files and derive change'
+	print('Compare two .osm files and derive change')
 	new_osm = cwd + '\osm_data'+'_'+timestamp_list[len(timestamp_list)-1]+'\merge_'+timestamp_list[len(timestamp_list)-1]+'.osm' 
 	old_osm = cwd + '\osm_data'+'_'+timestamp_list[len(timestamp_list)-2]+'\merge_'+timestamp_list[len(timestamp_list)-2]+'.osm'
 	out_file = cwd + '\output\diff_'+timestamp+'.osc'
@@ -53,7 +53,7 @@ def do_something_else(sc):
 	#calculate diff statictics
 	diff_file = out_file
 	out_dir = cwd + '\output'
-	print diff_file
+	print(diff_file)
 	cmd = 'python get_diff_stats.py ' + diff_file +' ' + out_dir
 	os.system(cmd)
 
@@ -61,7 +61,7 @@ def do_something_else(sc):
 	
 
 def do_something(sc): 
-	print "start first run..."
+	print("start first run...")
     
 	#get time
 	lt = time.localtime()
@@ -69,7 +69,7 @@ def do_something(sc):
 	timestamp = str(lt[0])+'_'+str(lt[1])+'_'+str(lt[2])+'_'+str(lt[3])+'_'+str(lt[4])
 	timestamp_list.append(timestamp)
 	
-	print 'timestamp: %s' % timestamp
+	print('timestamp: %s' % timestamp)
 	
 	#timestamp = '2016_6_29_17_4'
 	
@@ -86,13 +86,13 @@ def do_something(sc):
 	
 	
 	#get osm data for tasking manager project
-	print 'Download OSM data from OpenStreetMap API. This may take some minutes...'	
+	print('Download OSM data from OpenStreetMap API. This may take some minutes...')	
 	cmd = 'python get_tm_osm_data.py '+task_id+' '+osm_data_dir
 	os.system(cmd)
 	
 	
 	#merge osm data
-	print 'Merge .osm files'
+	print('Merge .osm files')
 	output_file = osm_data_dir + '\merge_'+timestamp+'.osm'
 	cmd = 'python merge_osm_data.py ' + osm_data_dir + ' ' + output_file + ' osm'
 	os.system(cmd)
