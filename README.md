@@ -1,13 +1,15 @@
 # OpenStreetMap Monitoring Tool for Python
 
-** Work in Progress - This tool is being updated to Python 3 **
+* Work in Progress - This tool is being updated to Python 3 *
+
 This Tool provides several python scripts that can be used to download data from the OpenStreetMap API and analyse changes over time. The scripts can be used seperately, but there is also a version that combines all of them. In the following you will find some descriptions.
 
 ## Set up
 
-Download the python scripts. Download osmosis-latest (http://bretth.dev.openstreetmap.org/osmosis-build/osmosis-latest.zip) unzip and copy to the same folder.
+1. Download the python scripts. 
+2. Download osmosis-latest (https://github.com/openstreetmap/osmosis/releases "OSMOSIS - command line Java app for processing OSM data") unzip and copy to the same folder.
 
-Further requirements: python libraries ogr and urllib2
+Further requirements: python libraries GDAL/OGR
 
 
 ## Analyse OSM contributions to Tasking Manager project every 15 Minutes

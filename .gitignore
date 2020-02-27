@@ -118,4 +118,9 @@ dmypy.json
 # Ignore all local history of files
 .history
 
+## ignore OSMOSIS folders
+/bin
+/config
+/script
+
 # End of https://www.gitignore.io/api/python,visualstudiocode
