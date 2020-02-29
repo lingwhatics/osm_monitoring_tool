@@ -34,7 +34,7 @@ def main(diff_file, out_dir):
 	Buildings = buildings()
 	
 	#read osm diff data
-	filein = file(diff_file, "r")
+	filein = open(diff_file, "r") #was file()
 	
 	lines = filein.readlines()
 
@@ -87,6 +87,7 @@ def main(diff_file, out_dir):
 	
 	#write to ouput file
 	outputAsc = out_dir + '/diff_stats.txt'
+	fileout = open(outputAsc, "a") # was file()
 	line = diff_file+';'+str(Nodes.created)+';'+str(Nodes.modified)+';'+str(Nodes.deleted)+';'+str(Ways.created)+';'+str(Ways.modified)+';'+str(Ways.deleted)+';'+str(Buildings.created)+';'+str(Buildings.modified)+';'+str(Buildings.deleted)+'\n'
 	fileout.write(line)
 	fileout.close()
