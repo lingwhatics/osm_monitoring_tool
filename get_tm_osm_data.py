@@ -14,10 +14,10 @@ import os
 
 def get_tm_project_json(task_id):
 	
-	#create url from hot tasking manager task_id
-	url = 'http://tasks.hotosm.org/project/'+str(task_id)+'/tasks.json'
-	referer = 'http://tasks.hotosm.org/project/'+str(task_id)
-	x_req = 'XMLHttpRequest\r\n'
+	#create url from hot tasking manager task_id using API v1
+	url = 'https://tasks.hotosm.org/api/v1/project/'+str(task_id)+'/tasks?as_file=true'
+	referer = 'https://tasks.hotosm.org/project/'+str(task_id)
+	x_req = 'XMLHttpRequest' #'XMLHttpRequest\r\n'
 	
 	#send xmlhttp request
 	req = urllib.request.Request(url)
@@ -70,7 +70,7 @@ def get_osm_data(min_lon,max_lat,max_lon,min_lat,output_file):
 	content = resp.read()
 	
 	#save osm data
-	fileout = file(output_file, "w")
+	fileout = open(output_file, "w") #was file()
 	fileout.write(content)
 	fileout.close()
 	
