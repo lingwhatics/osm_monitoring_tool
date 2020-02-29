@@ -24,7 +24,7 @@ def do_something_else(sc):
 	
 	#create osm data directory
 	cwd = os.getcwd()
-	osm_data_dir = cwd + '\osm_data'+'_'+timestamp
+	osm_data_dir = cwd + '/osm_data'+'_'+timestamp
 	
 	os.mkdir(osm_data_dir)
 	
@@ -36,23 +36,23 @@ def do_something_else(sc):
 	
 	#merge osm data
 	print('Merge .osm files')
-	output_file = osm_data_dir + '\merge_'+timestamp+'.osm'
+	output_file = osm_data_dir + '/merge_'+timestamp+'.osm'
 	cmd = 'python merge_osm_data.py ' + osm_data_dir + ' ' + output_file + ' osm'
 	os.system(cmd)
 	
 	
 	#compare osm data
 	print('Compare two .osm files and derive change')
-	new_osm = cwd + '\osm_data'+'_'+timestamp_list[len(timestamp_list)-1]+'\merge_'+timestamp_list[len(timestamp_list)-1]+'.osm' 
-	old_osm = cwd + '\osm_data'+'_'+timestamp_list[len(timestamp_list)-2]+'\merge_'+timestamp_list[len(timestamp_list)-2]+'.osm'
-	out_file = cwd + '\output\diff_'+timestamp+'.osc'
+	new_osm = cwd + '/osm_data'+'_'+timestamp_list[len(timestamp_list)-1]+'/merge_'+timestamp_list[len(timestamp_list)-1]+'.osm' 
+	old_osm = cwd + '/osm_data'+'_'+timestamp_list[len(timestamp_list)-2]+'/merge_'+timestamp_list[len(timestamp_list)-2]+'.osm'
+	out_file = cwd + '/output/diff_'+timestamp+'.osc'
 	cmd = 'python compare_osm_data.py ' + new_osm + ' ' + old_osm + ' ' + out_file
 	os.system(cmd)
 	
 	
 	#calculate diff statictics
 	diff_file = out_file
-	out_dir = cwd + '\output'
+	out_dir = cwd + '/output'
 	print(diff_file)
 	cmd = 'python get_diff_stats.py ' + diff_file +' ' + out_dir
 	os.system(cmd)
@@ -71,12 +71,10 @@ def do_something(sc):
 	
 	print('timestamp: %s' % timestamp)
 	
-	#timestamp = '2016_6_29_17_4'
-	
 	#create osm data directory
 	cwd = os.getcwd()
-	osm_data_dir = cwd + '\osm_data'+'_'+timestamp
-	out_dir = cwd + '\output'
+	osm_data_dir = cwd + '/osm_data'+'_'+timestamp
+	out_dir = cwd + '/output'
 	
 	if not os.path.exists(out_dir):
 		os.makedirs(out_dir)
@@ -93,12 +91,12 @@ def do_something(sc):
 	
 	#merge osm data
 	print('Merge .osm files')
-	output_file = osm_data_dir + '\merge_'+timestamp+'.osm'
+	output_file = osm_data_dir + '/merge_'+timestamp+'.osm'
 	cmd = 'python merge_osm_data.py ' + osm_data_dir + ' ' + output_file + ' osm'
 	os.system(cmd)
 	
-	outputAsc = out_dir + '\diff_stats.txt'
-	fileout = file(outputAsc, "w")
+	outputAsc = out_dir + '/diff_stats.txt'
+	fileout = open(outputAsc, "w") #was file(outputAsc, "w")
 	header = 'diff_file;nodes_created;nodes_modified;nodes_deleted;ways_created;ways_modified;ways_deleted;buildings_created;buildings_modified;buildings_deleted\n'
 	fileout.write(header)
 	fileout.close()

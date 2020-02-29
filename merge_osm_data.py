@@ -39,21 +39,21 @@ def main(directory,output_file,extension):
 	
 		#copy first file
 		if i == 0:	
-			filename = directory + '\\' + selected_files[i]
+			filename = directory + '/' + selected_files[i]
 			
 			cwd = os.getcwd()
-			osmosis = os.path.dirname(cwd) + '\\osmosis-latest\\bin\\osmosis.bat'
+			osmosis = os.path.dirname(cwd) + '/osmosis-latest/bin/osmosis.bat'
 			cmd_1 = osmosis + ' --read-xml file="'+filename+'" --sort --write-xml file="'+output_file+'"'
 			os.system(cmd_1)
 			
 		else:
-			filename = directory + '\\' + selected_files[i]
+			filename = directory + '/' + selected_files[i]
 			cmd_middle = cmd_middle + '--read-xml file="'+filename+'" --sort '
 			cmd_suffix = cmd_suffix + '--merge '
 			
 			if (i%50 == 0 ) or (i == (len(selected_files)-1)):
 				print(i)
-				osmosis = os.path.dirname(cwd) + '\\osmosis-latest\\bin\\osmosis.bat'
+				osmosis = os.path.dirname(cwd) + '/osmosis-latest/bin/osmosis.bat'
 				cmd_prefix = osmosis +' --read-xml file="'+output_file+'" --sort '
 				cmd = cmd_prefix + cmd_middle + cmd_suffix + ' --write-xml file="'+output_file+'" -q'
 				os.system(cmd)

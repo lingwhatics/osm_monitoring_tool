@@ -86,8 +86,7 @@ def main(diff_file, out_dir):
 							Buildings.deleted = Buildings.deleted + 1
 	
 	#write to ouput file
-	outputAsc = out_dir + '\diff_stats.txt'
-	fileout = file(outputAsc, "a")
+	outputAsc = out_dir + '/diff_stats.txt'
 	line = diff_file+';'+str(Nodes.created)+';'+str(Nodes.modified)+';'+str(Nodes.deleted)+';'+str(Ways.created)+';'+str(Ways.modified)+';'+str(Ways.deleted)+';'+str(Buildings.created)+';'+str(Buildings.modified)+';'+str(Buildings.deleted)+'\n'
 	fileout.write(line)
 	fileout.close()
