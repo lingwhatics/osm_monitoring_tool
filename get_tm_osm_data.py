@@ -48,7 +48,8 @@ def get_tm_info(tm_project_json):
 	for z in range(0,cnt_features):
 		
 		#get subtask_id, type, coordinates from tm_project_json
-		subtask_id = str(tm_project_json['features'][z]['id'])
+		subtask_id = tm_project_json['features'][z]['properties']
+		subtask_id = subtask_id['taskId']
 		type = tm_project_json['features'][z]['geometry']['type']
 		coordinates = tm_project_json['features'][z]['geometry']['coordinates']
 		geojson = '{"type":"'+str(type)+'","coordinates":'+str(coordinates)+'}'
@@ -71,7 +72,7 @@ def get_osm_data(min_lon,max_lat,max_lon,min_lat,output_file):
 	
 	#save osm data
 	fileout = open(output_file, "w") #was file()
-	fileout.write(content)
+	fileout.write(str(content))
 	fileout.close()
 	
 	#close connection
